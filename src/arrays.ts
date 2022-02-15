@@ -110,7 +110,7 @@ export function countShortWords(words: string[]): number {
  * For instance, the array [1, 9, -5, 7] would become [1, 9, -5, 10, 7]
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
-export function injectPositive(values: number[]): number[] {
+/**export function injectPositive(values: number[]): number[] {
     const negativeIndex = values.findIndex(
         (value: number): boolean => value < 0
     );
@@ -134,4 +134,6 @@ export function injectPositive(values: number[]): number[] {
             (oldValue: number, newValue: number) => oldValue + newValue
         )
     ];
+    
 }
+*/
