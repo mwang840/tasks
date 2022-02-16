@@ -22,16 +22,24 @@ function App(): JSX.Element {
             </Button>
             <Container>
                 <Row>
-                    <Col>Bully Maguire</Col> <Col>Bully Garfield</Col>
+                    <div
+                        style={{
+                            width: "70px",
+                            height: "40px",
+                            backgroundColor: "red"
+                        }}
+                    ></div>
+                    <Col>Bully Maguire</Col>{" "}
+                    <div
+                        style={{
+                            width: "70px",
+                            height: "40px",
+                            backgroundColor: "red"
+                        }}
+                    ></div>
+                    <Col>Bully Garfield</Col>
                 </Row>
             </Container>
-            <div
-                style={{
-                    width: "40px",
-                    height: "80px",
-                    backgroundColor: "yellow"
-                }}
-            ></div>
             <ul>
                 <li>Tottenham</li>
                 <li>Chelsea</li>
