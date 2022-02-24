@@ -84,8 +84,11 @@ export function toMarkdown(question: Question): string {
     const withATitle = "# " + question.name;
     let whatEver = question.body;
     const outcomes = question.options.join("\n" + "- ");
-    const daChoices = question.type === "multiple_choice_question";
-    daChoices ? (whatEver = whatEver + "\n" + "- " + outcomes) : whatEver;
+
+    const daChoices = question.type;
+    if (daChoices === "multiple_choice_question") {
+        whatEver = whatEver + "\n" + "- " + outcomes;
+    }
     return withATitle + "\n" + whatEver;
 }
 
