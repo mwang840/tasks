@@ -40,6 +40,7 @@ function App(): JSX.Element {
                             style={{
                                 width: "80px",
                                 height: "20px",
+                                alignContent: "center",
                                 backgroundColor: "red"
                             }}
                         ></div>

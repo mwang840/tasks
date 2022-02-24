@@ -5,13 +5,17 @@
  * the number twice.
  */
 export function bookEndList(numbers: number[]): number[] {
+    let bookEnds = [...numbers];
     if (numbers.length === 0) {
         return [];
     }
     if (numbers.length === 1) {
-        return [numbers.length];
+        bookEnds = [numbers[0], numbers[numbers.length - 1]];
+        return bookEnds;
+    } else {
+        bookEnds = [numbers[0], numbers[numbers.length - 1]];
+        return bookEnds;
     }
-    return numbers;
 }
 
 /**
@@ -27,15 +31,12 @@ export function tripleNumbers(numbers: number[]): number[] {
  * Consume an array of strings and convert them to integers. If
  * the number cannot be parsed as an integer, convert it to 0 instead.
  */
-/**export function stringsToIntegers(numbers: string[]): number[] {
-    const doubledLowPrices = numbers.map(
-        // If the price is less than 10, double the price, otherwise use the price unchanged
-        (word: string): number => (!parseInt(word) ? (word = 0) : word)
+export function stringsToIntegers(numbers: string[]): number[] {
+    const fullOfZeros = numbers.map((argument: string): number =>
+        isNaN(Number(argument)) ? 0 : parseInt(argument)
     );
-
-    const iAmAnInt = numbers.map((words: string): number => parseInt(words));
-    return iAmAnInt;
-}*/
+    return fullOfZeros;
+}
 
 /**
  * Consume an array of strings and return them as numbers. Note that
@@ -44,22 +45,33 @@ export function tripleNumbers(numbers: number[]): number[] {
  * convert it to 0 instead.
  */
 // Remember, you can write functions as lambdas too! They work exactly the same.
-/**export const removeDollars = (amounts: string[]): number[] => {
-    const noDollarSign = stringsToIntegers(amounts);
-    return noDollarSign;
-};*/
+export const removeDollars = (amounts: string[]): number[] => {
+    const noSign = amounts.map((word: string): string =>
+        word.startsWith("$") ? word.slice(1) : word
+    );
+    const dollars = noSign.map((argument: string): number =>
+        isNaN(Number(argument)) || argument === "" ? 0 : parseInt(argument)
+    );
+    return dollars;
+};
 
 /**
  * Consume an array of messages and return a new list of the messages. However, any
  * string that ends in "!" should be made uppercase. Also, remove any strings that end
  * in question marks ("?").
  */
-/**export const shoutIfExclaiming = (messages: string[]): string[] => {
-    const questions = messages.filter(
-        (message: string): boolean => message[message.length - 1] == "?"
-    );
-    return [];
-};*/
+export const shoutIfExclaiming = (messages: string[]): string[] => {
+    let shouted = [...messages];
+    shouted = messages
+        .filter(
+            (message: string): boolean => message[message.length - 1] !== "?"
+        )
+        .map((caps: string): string =>
+            caps[caps.length - 1] === "!" ? caps.toUpperCase() : caps
+        );
+    //const upperCases = messages.map((message:string));
+    return shouted;
+};
 
 /**
  * Consumes an array of words and returns the number of words that are LESS THAN
@@ -77,11 +89,13 @@ export function countShortWords(words: string[]): number {
  * the colors are either 'red', 'blue', or 'green'. If an empty list is given,
  * then return true.
  */
-/**export function allRGB(colors: string[]): boolean {
-    if (colors.length === 0) {
-        return true;
-    }
-}/*
+export function allRGB(colors: string[]): boolean {
+    const noneRGB = colors.filter(
+        (color: string): boolean =>
+            color !== "red" && color !== "blue" && color !== "green"
+    );
+    return noneRGB.length === 0;
+}
 
 /**
  * Consumes an array of numbers, and produces a string representation of the
@@ -90,17 +104,19 @@ export function countShortWords(words: string[]): number {
  * For instance, the array [1, 2, 3] would become "6=1+2+3".
  * And the array [] would become "0=0".
  */
-/**export function makeMath(addends: number[]): string {
+export function makeMath(addends: number[]): string {
     if (addends.length === 0) {
         return "0=0";
     } else {
-        const stringVersion = addends.map((addend: number): string =>
-            addend.toString()
+        const mathSum = addends.reduce(
+            (currentTotal: number, oneDigit: number) => currentTotal + oneDigit,
+            0
         );
+        mathSum.toString();
+        const listOfSums = addends.join("+");
+        return mathSum + "=" + listOfSums;
     }
-    return "";
-}/*
-
+}
 /**
  * Consumes an array of numbers and produces a new array of the same numbers,
  * with one difference. After the FIRST negative number, insert the sum of all
@@ -111,27 +127,44 @@ export function countShortWords(words: string[]): number {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
+    const positiveVibes = [...values];
     const negativeIndex = values.findIndex(
         (value: number): boolean => value < 0
     );
-    //In the case an index is not undefined (fouund)
-    if (negativeIndex !== undefined) {
-        values.splice(
-            negativeIndex + 1,
-            0,
-            values
-                .slice(0, negativeIndex)
-                .reduce(
-                    (oldValue: number, newValue: number) => oldValue + newValue
-                )
+    //In the case an index is not undefined (found)
+    if (negativeIndex !== -1) {
+        if (negativeIndex !== 0) {
+            positiveVibes.splice(
+                negativeIndex + 1,
+                0,
+                positiveVibes
+                    .slice(0, negativeIndex)
+                    .reduce(
+                        (oldValue: number, newValue: number) =>
+                            oldValue + newValue
+                    )
+            );
+        } else {
+            positiveVibes.splice(negativeIndex + 1, 0, 0);
+        }
+
+        return positiveVibes;
+    } else {
+        //Otherwise return the sum with positive values when array is copied
+        const sum = values.reduce(
+            (oldValue: number, newValue: number) => oldValue + newValue,
+            0
         );
-        return values;
-    }
-    //Otherwise return the sum with positive values when array is copied
-    return [
-        ...values,
+        const onlyPositive = [...values, sum];
+        /**positiveVibes.push(sum);
+    /**positiveVibes.splice(
+        values.length-1,
+        0,
         values.reduce(
             (oldValue: number, newValue: number) => oldValue + newValue
         )
-    ];
+    );
+    */
+        return onlyPositive;
+    }
 }
