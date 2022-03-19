@@ -14,7 +14,6 @@ export function ShowHideTasks(): JSX.Element {
         <div>
             {visible && <div></div>}
             <img src={sketch} />
-            <ListOfQuizzes quizzes={hereIsAllQuizzes}></ListOfQuizzes>
             <Button onClick={() => setVisible(!visible)}>Show/Hide</Button>
         </div>
     );
