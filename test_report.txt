@@ -21,17 +21,21 @@ PASS src/components/Counter.test.tsx
 PASS src/components/RevealAnswer.test.tsx
 PASS src/bad-components/ColoredBox.test.tsx
 PASS src/bad-components/ShoveBox.test.tsx
+PASS src/quizzer/Quizzer.test.tsx
 PASS src/App.test.tsx
 -----------------------------|---------|----------|---------|---------|-------------------
 File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -----------------------------|---------|----------|---------|---------|-------------------
-All files                    |     100 |    96.19 |     100 |     100 |                   
+All files                    |   98.12 |    94.39 |   97.12 |   98.08 |                   
  src                         |     100 |    98.43 |     100 |     100 |                   
   App.tsx                    |     100 |      100 |     100 |     100 |                   
   arrays.ts                  |     100 |      100 |     100 |     100 |                   
   functions.ts               |     100 |      100 |     100 |     100 |                   
   nested.ts                  |     100 |    95.23 |     100 |     100 | 201               
   objects.ts                 |     100 |      100 |     100 |     100 |                   
+ src/QuizzerInterfaces       |       0 |        0 |       0 |       0 |                   
+  QuizLayout.ts              |       0 |        0 |       0 |       0 |                   
+  QuizQuestions.ts           |       0 |        0 |       0 |       0 |                   
  src/bad-components          |     100 |       50 |     100 |     100 |                   
   ChooseTeam.tsx             |     100 |       50 |     100 |     100 | 17                
   ColoredBox.tsx             |     100 |      100 |     100 |     100 |                   
@@ -53,10 +57,13 @@ All files                    |     100 |    96.19 |     100 |     100 |
  src/interfaces              |       0 |        0 |       0 |       0 |                   
   answer.ts                  |       0 |        0 |       0 |       0 |                   
   question.ts                |       0 |        0 |       0 |       0 |                   
+ src/quizzer                 |   16.66 |        0 |      20 |   16.66 |                   
+  Components_of_Quiz.tsx     |       0 |      100 |       0 |       0 | 11-14             
+  Quizzer.tsx                |      25 |        0 |   33.33 |      25 | 9-14              
 -----------------------------|---------|----------|---------|---------|-------------------
 
-Test Suites: 20 passed, 20 total
-Tests:       134 passed, 134 total
+Test Suites: 21 passed, 21 total
+Tests:       135 passed, 135 total
 Snapshots:   0 total
-Time:        10.156 s
+Time:        10.913 s
 Ran all test suites.
