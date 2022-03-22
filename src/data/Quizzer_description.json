@@ -45,5 +45,23 @@
                 "picture": ""
             }
         ]
+    },
+
+    {
+        "title": "Fnaf jumpscares",
+        "description": "Can you guuess the animatronic who scared the lights out of you?",
+        "totalQuestions": 6,
+        "questions": [
+            {
+                "id": 6,
+                "name": "Jupmscare 1",
+                "body": "Name this anamontric?",
+                "points": 5,
+                "options": ["Freddy", "Bon-Bon", "Ennard", "None of the above"],
+                "expected": "Ennard",
+                "published": true,
+                "picture": ""
+            }
+        ]
     }
 ]
