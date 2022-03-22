@@ -38,7 +38,7 @@ export function ColoredBox(): JSX.Element {
     return (
         <div>
             <h3>Colored Box</h3>
-            <span>The current color is: </span>
+            <span>The current color is: {COLORS[colorIndex]} </span>
             <div>
                 <ChangeColor changeColor={switchColor}></ChangeColor>
                 <ColorPreview lookAtColor={COLORS[colorIndex]}></ColorPreview>
