@@ -53,12 +53,54 @@
         "totalQuestions": 6,
         "questions": [
             {
-                "id": 6,
+                "id": "DSZ9-eEn3Hc",
                 "name": "Jupmscare 1",
                 "body": "Name this anamontric?",
                 "points": 5,
                 "options": ["Freddy", "Bon-Bon", "Ennard", "None of the above"],
                 "expected": "Ennard",
+                "published": true,
+                "picture": ""
+            },
+            {
+                "id": "Jr5J6fX-Zmg",
+                "name": "Jupmscare 2",
+                "body": "Name this anamontric?",
+                "points": 5,
+                "options": ["Scraptrap", "Chica", "Roxy", "None of the above"],
+                "expected": "Ennard",
+                "published": true,
+                "picture": ""
+            },
+            {
+                "id": "B1ia7v3yDb8",
+                "name": "Jumpscare 3",
+                "body": "Name this anamontric?",
+                "points": 5,
+                "options": [
+                    "Glamrock Freddy",
+                    "Lefty",
+                    "Withered Freddy",
+                    "Plushtrap",
+                    "None of the above"
+                ],
+                "expected": "Lefty",
+                "published": true,
+                "picture": ""
+            },
+            {
+                "id": "rirWOOWWGYo",
+                "name": "Jumpscare 4",
+                "body": "Name this anamontric?",
+                "points": 5,
+                "options": [
+                    "Springtrap",
+                    "Lefty",
+                    "Withered Freddy",
+                    "Plushtrap",
+                    "None of the above"
+                ],
+                "expected": "Lefty",
                 "published": true,
                 "picture": ""
             }
