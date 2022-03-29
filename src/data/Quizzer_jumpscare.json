@@ -54,6 +54,32 @@
             "expected": "Springtrap",
             "published": true,
             "picture": ""
+        },
+        {
+            "id": "JL11fr626_Q",
+            "name": "Jumpscare 5",
+            "body": "Name this anamontric?",
+            "points": 5,
+            "options": [
+                "ScrapBaby",
+                "Roxy",
+                "Ballora",
+                "Balloon Boy",
+                "Nightmare"
+            ],
+            "expected": "Nightmare",
+            "published": true,
+            "picture": ""
+        },
+        {
+            "id": "QgPWE4YyuH4",
+            "name": "Jumpscare 6",
+            "body": "Name this anamontric?",
+            "points": 5,
+            "options": ["", "Plushtrap", "Chica", "Golden Freddy", "Nightmare"],
+            "expected": "Golden Freddy",
+            "published": true,
+            "picture": ""
         }
     ]
 }
