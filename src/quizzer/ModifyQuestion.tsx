@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Question, QuestionType } from "./interfaces/question";
+import { Question, QuestionType } from "../interfaces/question";
 
 export function ModifyQuestion(): JSX.Element {
     function publishQuestion(question: Question): Question {
