@@ -1,7 +1,7 @@
 import React from "react";
 import { Stack } from "react-bootstrap";
 import { QuizQuestions } from "../QuizzerInterfaces/QuizQuestions";
-import { QuizLayout } from "../QuizzerInterfaces/QuizLayout";
+import { ViewQuizzer } from "./ViewQuizzer";
 
 export function QuestionList({
     questions
@@ -9,11 +9,11 @@ export function QuestionList({
     questions: QuizQuestions[];
 }): JSX.Element {
     return (
-        <Stack gap={4}>
+        <Stack gap={3}>
             {questions.map((question: QuizQuestions) => (
-                <div key={question.name}>
-                    {<QuizLayout question={question}></QuizLayout>}
-                </div>
+                <h4 key={question.name}>
+                    <ViewQuizzer quest={question}></ViewQuizzer>
+                </h4>
             ))}
         </Stack>
     );
