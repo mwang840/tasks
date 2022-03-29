@@ -7,7 +7,6 @@ describe("JumpScares Tests", () => {
         render(<GetJumpScared id={""} />);
     });
     test("The Jumpscare renders", () => {
-        // Up to you to decide what your tests are!
-        // Add more tests, more components, more test files!
+        expect(GetJumpScared({"DSZ9 - eEn3Hc"})).toBe(6);
     });
 });
