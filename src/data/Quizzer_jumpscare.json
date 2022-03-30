@@ -14,12 +14,12 @@
             "picture": ""
         },
         {
-            "id": "Jr5J6fX-Zmg",
+            "id": "r2H8BxDRmDE",
             "name": "Jupmscare 2",
             "body": "Name this anamontric?",
             "points": 5,
             "options": ["Scraptrap", "Chica", "Roxy", "None of the above"],
-            "expected": "Ennard",
+            "expected": "None of the above",
             "published": true,
             "picture": ""
         },
