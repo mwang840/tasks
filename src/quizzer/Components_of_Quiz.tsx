@@ -12,7 +12,7 @@ export function QuestionList({
         <Stack gap={3}>
             {questions.map((question: QuizQuestions) => (
                 <h4 key={question.name}>
-                    <ViewQuizzer quest={question}></ViewQuizzer>
+                    <ViewQuizzer question={question}></ViewQuizzer>
                 </h4>
             ))}
         </Stack>
