@@ -1,0 +1,85 @@
+{
+    "title": "Mashups",
+    "description": "Name the original song for this with the author",
+    "totalQuestions": 6,
+    "questions": [
+        {
+            "id": "DSZ9-eEn3Hc",
+            "name": "Jupmscare 1",
+            "body": "Name this anamontric?",
+            "points": 5,
+            "options": ["Freddy", "Bon-Bon", "Ennard", "None of the above"],
+            "expected": "Ennard",
+            "published": true,
+            "picture": ""
+        },
+        {
+            "id": "r2H8BxDRmDE",
+            "name": "Jupmscare 2",
+            "body": "Name this anamontric?",
+            "points": 5,
+            "options": ["Scraptrap", "Chica", "Roxy", "None of the above"],
+            "expected": "None of the above",
+            "published": true,
+            "picture": ""
+        },
+        {
+            "id": "B1ia7v3yDb8",
+            "name": "Jumpscare 3",
+            "body": "Name this anamontric?",
+            "points": 5,
+            "options": [
+                "Glamrock Freddy",
+                "Lefty",
+                "Withered Freddy",
+                "Plushtrap",
+                "None of the above"
+            ],
+            "expected": "Lefty",
+            "published": true,
+            "picture": ""
+        },
+        {
+            "id": "rirWOOWWGYo",
+            "name": "Jumpscare 4",
+            "body": "Name this anamontric?",
+            "points": 5,
+            "options": [
+                "Springtrap",
+                "Lefty",
+                "Withered Freddy",
+                "Plushtrap",
+                "None of the above"
+            ],
+            "expected": "Springtrap",
+            "published": true,
+            "picture": ""
+        },
+        {
+            "id": "JL11fr626_Q",
+            "name": "Jumpscare 5",
+            "body": "Name this anamontric?",
+            "points": 5,
+            "options": [
+                "ScrapBaby",
+                "Roxy",
+                "Ballora",
+                "Balloon Boy",
+                "Nightmare"
+            ],
+            "expected": "Nightmare",
+            "published": true,
+            "picture": ""
+        },
+        {
+            "id": "QgPWE4YyuH4",
+            "name": "Jumpscare 6",
+            "body": "Name this anamontric?",
+            "points": 5,
+            "options": ["", "Plushtrap", "Chica", "Golden Freddy", "Nightmare"],
+            "expected": "Golden Freddy",
+            "published": true,
+            "picture": ""
+        }
+    ]
+}
