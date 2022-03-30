@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Button, Col } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { QuizLayout } from "../QuizzerInterfaces/QuizLayout";
 
 export function ViewQuizzer({ quiz }: { quiz: QuizLayout }): JSX.Element {
