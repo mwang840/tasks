@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Col } from "react-bootstrap";
 import { QuizLayout } from "../QuizzerInterfaces/QuizLayout";
+import { QuestionList } from "./Components_of_Quiz";
 
 export function ViewQuizzer({ quiz }: { quiz: QuizLayout }): JSX.Element {
     const [seeing, setSeeing] = useState<boolean>(false);
@@ -18,7 +19,13 @@ export function ViewQuizzer({ quiz }: { quiz: QuizLayout }): JSX.Element {
             <div>
                 <Button onClick={seeQuiz}> To View/Not To View</Button>
             </div>
-            <div>{seeing}</div>
+            <div>
+                {seeing ? (
+                    <QuestionList questions={quiz.questions}></QuestionList>
+                ) : (
+                    <Col></Col>
+                )}
+            </div>
         </div>
     );
 }
