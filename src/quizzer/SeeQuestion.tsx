@@ -6,4 +6,6 @@ type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
 >;
 
-export function SeeQuestion(): JSX.Element {}
+export function SeeQuestion(): JSX.Element {
+    return <div></div>;
+}
