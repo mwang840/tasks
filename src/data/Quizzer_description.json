@@ -41,7 +41,7 @@
                 "points": 3,
                 "options": ["19", "21", "U dum boi", "Idk man"],
                 "expected": "19",
-                "published": false,
+                "published": true,
                 "picture": ""
             }
         ]
