@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { QuizQuestions } from "../QuizzerInterfaces/QuizQuestions";
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
@@ -29,9 +29,37 @@ export function SeeQuestion({
             <div>
                 <h3>{question.body}</h3>
                 <h4>{"Points" + question.points}</h4>
-                <h5>{question.type === "short-answer" ? <div>
-                    <Form.Group controlId = "short-answers only"></Form.Group>
-                </div>): ()}</h5>
+                <h5>
+                    {question.type === "short-answer" ? (
+                        <div>
+                            <Form.Group controlId="short-answers only">
+                                <Form.Label>Check:</Form.Label>
+                                <Form.Control
+                                    value={answer}
+                                    onChange={checkAnswer}
+                                />
+                            </Form.Group>
+                            {answer === question.expected
+                                ? "Correct"
+                                : "Incorrect"}
+                        </div>
+                    ) : (
+                        <div>
+                            <Form.Group controlId="multiple-choice">
+                                <Form.Check>
+                                    value={answerChoices}
+                                    onChange={matchingAnswer}
+                                    {choices.map((choice: string) => (
+                                        <option
+                                            key={choice}
+                                            value={choice}
+                                        ></option>
+                                    ))}
+                                </Form.Check>
+                            </Form.Group>
+                        </div>
+                    )}
+                </h5>
             </div>
         </div>
     );
