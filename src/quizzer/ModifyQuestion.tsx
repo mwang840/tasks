@@ -5,13 +5,29 @@ export function ModifyQuestion({
     question,
     deleteQuestion,
     editQuestion,
-    changeEdit
+    alterEdit
 }: {
     question: Question;
     deleteQuestion: (id: number) => void;
     editQuestion: (id: number, newQuestion: Question) => void;
-    changeEdit: () => void;
+    alterEdit: () => void;
 }): JSX.Element {
+    const [bodies, setBodies] = useState<string>(question.body);
+    const [actual, setActual] = useState<string>(question.expected);
+    const [publish, setPublish] = useState<boolean>(question.published);
+    const [points, setPoints] = useState<number>(question.points);
+
+    function saveProgress() {
+        editQuestion(question.id, {
+            ...question,
+            body: bodies,
+            expected: actual,
+            published: publish,
+            points: points
+        });
+        alterEdit();
+    }
+
     function publishQuestion(question: Question): Question {
         const newQuestion = { ...question, published: !question.published };
         return newQuestion;
