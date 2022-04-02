@@ -1,7 +1,17 @@
 import React, { useState } from "react";
-import { Question, QuestionType } from "../interfaces/question";
+import { Question } from "../interfaces/question";
 
-export function ModifyQuestion(): JSX.Element {
+export function ModifyQuestion({
+    question,
+    deleteQuestion,
+    editQuestion,
+    changeEdit
+}: {
+    question: Question;
+    deleteQuestion: (id: number) => void;
+    editQuestion: (id: number, newQuestion: Question) => void;
+    changeEdit: () => void;
+}): JSX.Element {
     function publishQuestion(question: Question): Question {
         const newQuestion = { ...question, published: !question.published };
         return newQuestion;
