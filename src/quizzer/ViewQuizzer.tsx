@@ -1,31 +1,63 @@
-import React from "react";
-import { useState } from "react";
-import { Button, Col } from "react-bootstrap";
-import { QuizLayout } from "../QuizzerInterfaces/QuizLayout";
-import { QuestionList } from "./Components_of_Quiz";
+import React, { useState } from "react";
+import { Question } from "../interfaces/question";
+import { Answer } from "../interfaces/answer";
 
-export function ViewQuizzer({ quiz }: { quiz: QuizLayout }): JSX.Element {
-    const [seeing, setSeeing] = useState<boolean>(false);
-    //Views the quiz
-    function seeQuiz() {
-        setSeeing(!seeing);
+export function ModifyQuestion({
+    question,
+    deleteQuestion,
+    editQuestion,
+    alterEdit
+}: {
+    question: Question;
+    deleteQuestion: (id: number) => void;
+    editQuestion: (id: number, newQuestion: Question) => void;
+    alterEdit: () => void;
+}): JSX.Element {
+    const [bodies, setBodies] = useState<string>(question.body);
+    const [actual, setActual] = useState<string>(question.expected);
+    const [publish, setPublish] = useState<boolean>(question.published);
+    const [answer, setAnswer] = useState<string>(question.expected);
+    const [points, setPoints] = useState<number>(question.points);
+
+    function saveProgress() {
+        editQuestion(question.id, {
+            ...question,
+            body: bodies,
+            expected: actual,
+            published: publish,
+            points: points
+        });
+        alterEdit();
     }
 
-    return (
-        <div>
-            <header>{quiz.title}</header>
-            <h2>{"Total amt of questions: " + quiz.totalQuestions}</h2>
-            <h4>{quiz.description}</h4>
-            <div>
-                <Button onClick={seeQuiz}> To View/Not To View</Button>
-            </div>
-            <div>
-                {seeing ? (
-                    <QuestionList questions={quiz.questions}></QuestionList>
-                ) : (
-                    <Col></Col>
-                )}
-            </div>
-        </div>
-    );
+    function dontSave() {
+        alterEdit();
+    }
+
+    function startOver() {
+        return;
+    }
+
+    function publishQuestion(question: Question): Question {
+        const newQuestion = { ...question, published: !question.published };
+        return newQuestion;
+    }
+
+    function unpublishQuestion(question: Question): Question {
+        const newQuestion = { ...question, published: question.published };
+        return newQuestion;
+    }
+    function isCorrect(question: Question, answer: string): boolean {
+        return (
+            answer.toLowerCase().trim() ===
+            question.expected.toLowerCase().trim()
+        );
+    }
+    function removeQuestion(id: string) {
+        setBodies(
+            bodies.filter((question: Question): boolean => question.id !== id)
+        );
+    }
+
+    return <div></div>;
 }
