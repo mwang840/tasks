@@ -28,6 +28,10 @@ export function ModifyQuestion({
         alterEdit();
     }
 
+    function dontSave() {
+        alterEdit();
+    }
+
     function publishQuestion(question: Question): Question {
         const newQuestion = { ...question, published: !question.published };
         return newQuestion;
