@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Question } from "../interfaces/question";
+import { Form, Button, Row, Col } from "react-bootstrap";
 
 export function ModifyQuestion({
     question,
@@ -41,5 +42,9 @@ export function ModifyQuestion({
         const newQuestion = { ...question, published: question.published };
         return newQuestion;
     }
-    return <div></div>;
+    return (
+        <div>
+            <Form.Group controlId="question-layout"></Form.Group>
+        </div>
+    );
 }
