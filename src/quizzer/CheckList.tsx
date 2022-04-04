@@ -26,7 +26,6 @@ export function Checklist(): JSX.Element {
                             <li>✔️Edit Questions | Test: ✔️</li>
                             <li>✔️Add Questions | Test: ✔️</li>
                             <li>✔️Delete Questions | Test: ✔️</li>
-                            <li>✔️Reorder Questions | Test: ✔️</li>
                             <li>✔️Add Quizzes | Test: ✔️</li>
                         </ul>
                     </Col>
