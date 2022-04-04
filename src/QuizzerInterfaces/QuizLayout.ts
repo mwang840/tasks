@@ -5,4 +5,5 @@ export interface QuizLayout {
     description: string; //what quiz is on
     totalQuestions: number; //total Amt of questions
     questions: QuizQuestions[]; //the actual questions in the quiz
+    points: number;
 }
