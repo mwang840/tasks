@@ -1,119 +1,88 @@
 import React, { useState } from "react";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Question } from "../interfaces/question";
-import { Form, Button, Row, Col, Container } from "react-bootstrap";
 
-export function ModifyQuestion({
+export function EditMode({
     question,
     deleteQuestion,
     editQuestion,
-    alterEdit
+    editMode
 }: {
     question: Question;
-    deleteQuestion: (id: number) => void;
-    editQuestion: (id: number, newQuestion: Question) => void;
-    alterEdit: () => void;
+    deleteQuestion: (name: string) => void;
+    editQuestion: (name: string, newQuestion: Question) => void;
+    editMode: () => void;
 }): JSX.Element {
-    const [bodies, setBodies] = useState<string>(question.body);
-    const [actual, setActual] = useState<string>(question.expected);
-    const [publish, setPublish] = useState<boolean>(question.published);
-    const [points, setPoints] = useState<number>(question.points);
+    const [name, setName] = useState<string>(question.name);
+    const [body, setBody] = useState<string>(question.body);
+    const [correctAnswer, setCorrectAnswer] = useState<string>(
+        question.expected
+    );
+    const [numPoints, setNumPoints] = useState<string>(
+        question.points.toString()
+    );
 
-    function saveProgress() {
-        editQuestion(question.id, {
+    function save(): void {
+        editQuestion(question.name, {
             ...question,
-            body: bodies,
-            expected: actual,
-            published: publish,
-            points: points
+            name: name,
+            body: body,
+            points: parseInt(numPoints),
+            expected: correctAnswer
         });
-        alterEdit();
+        editMode();
     }
 
-    function dontSave() {
-        alterEdit();
-    }
     return (
-        <Container>
-            <Row>
-                <Col>
-                    <Form.Group controlId="formQuestionBody" as={Row}>
-                        <Form.Label column sm={2}>
-                            Body:
-                        </Form.Label>
-                        <Col>
+        <div>
+            <Container>
+                <Row>
+                    <Col>
+                        <Form.Group as={Row}>
+                            <Form.Label>Question Name</Form.Label>
                             <Form.Control
-                                value={bodies}
+                                value={name}
                                 onChange={(
                                     event: React.ChangeEvent<HTMLInputElement>
-                                ) => setBodies(event.target.value)}
+                                ) => setName(event.target.value)}
                             />
-                        </Col>
-                    </Form.Group>
-                    <Form.Group controlId="formQuestionExpected" as={Row}>
-                        <Form.Label column sm={2}>
-                            Expected:
-                        </Form.Label>
-                        <Col>
+                        </Form.Group>
+                        <Form.Group as={Row}>
+                            <Form.Label>Body</Form.Label>
                             <Form.Control
-                                value={actual}
+                                value={body}
                                 onChange={(
                                     event: React.ChangeEvent<HTMLInputElement>
-                                ) => setActual(event.target.value)}
+                                ) => setBody(event.target.value)}
                             />
-                        </Col>
-                    </Form.Group>
-                    <Form.Check
-                        type="checkbox"
-                        id="is-Published-check"
-                        label="Publish?"
-                        checked={publish}
-                        onChange={(
-                            event: React.ChangeEvent<HTMLInputElement>
-                        ) => setPublish(event.target.checked)}
-                        style={{
-                            margin: "auto",
-                            width: "fit-content"
-                        }}
-                    />
-                    <Form.Group controlId="formQuestionPoints" as={Row}>
-                        <Form.Label column sm={2}>
-                            Points:
-                        </Form.Label>
-                        <Col>
+                        </Form.Group>
+                        <Form.Group as={Row}>
+                            <Form.Label># of Points</Form.Label>
                             <Form.Control
-                                type="number"
-                                value={points}
+                                value={numPoints}
                                 onChange={(
                                     event: React.ChangeEvent<HTMLInputElement>
-                                ) =>
-                                    setPoints(parseInt(event.target.value) || 0)
-                                }
+                                ) => setNumPoints(event.target.value)}
                             />
-                        </Col>
-                    </Form.Group>
-                    <Button
-                        onClick={saveProgress}
-                        variant="success"
-                        className="me-4"
-                    >
-                        Save
-                    </Button>
-                    <Button
-                        onClick={dontSave}
-                        variant="warning"
-                        className="me-5"
-                    >
-                        Cancel
-                    </Button>
-                    <Button
-                        onClick={() => deleteQuestion(question.id)}
-                        variant="danger"
-                        className="me-8"
-                    >
+                        </Form.Group>
+                        <Form.Group as={Row}>
+                            <Form.Label>Correct Answer</Form.Label>
+                            <Form.Control
+                                value={correctAnswer}
+                                onChange={(
+                                    event: React.ChangeEvent<HTMLInputElement>
+                                ) => setCorrectAnswer(event.target.value)}
+                            />
+                        </Form.Group>
+                    </Col>
+                </Row>
+                <Row>
+                    <Button onClick={save}>Save</Button>
+                    <Button onClick={() => deleteQuestion(question.name)}>
                         Delete
                     </Button>
-                </Col>
-            </Row>
-        </Container>
+                </Row>
+            </Container>
+        </div>
     );
 }
