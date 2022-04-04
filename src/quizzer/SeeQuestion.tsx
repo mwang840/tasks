@@ -57,6 +57,7 @@ export function SeeQuestion({
                                     ))}
                                 </Form.Check>
                             </Form.Group>
+                            {answer === question.expected ? "Correct" : "Wrong"}
                         </div>
                     )}
                 </h5>
