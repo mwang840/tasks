@@ -1,63 +1,102 @@
 import React, { useState } from "react";
+import { Container, Row, Button, Col, Form } from "react-bootstrap";
 import { Question } from "../interfaces/question";
-import { Answer } from "../interfaces/answer";
+import { EditMode } from "./ModifyQuestion";
 
-export function ModifyQuestion({
+export function ViewQuizzer({
     question,
     deleteQuestion,
-    editQuestion,
-    alterEdit
+    editQuestion
 }: {
     question: Question;
-    deleteQuestion: (id: number) => void;
-    editQuestion: (id: number, newQuestion: Question) => void;
-    alterEdit: () => void;
+    deleteQuestion: (name: string) => void;
+    editQuestion: (name: string, newQuestion: Question) => void;
 }): JSX.Element {
-    const [bodies, setBodies] = useState<string>(question.body);
-    const [actual, setActual] = useState<string>(question.expected);
-    const [publish, setPublish] = useState<boolean>(question.published);
-    const [answer, setAnswer] = useState<string>(question.expected);
-    const [points, setPoints] = useState<number>(question.points);
+    const [isEditing, setMode] = useState<boolean>(false);
+    const [answer, setAnswer] = useState<string>("");
 
-    function saveProgress() {
-        editQuestion(question.id, {
-            ...question,
-            body: bodies,
-            expected: actual,
-            published: publish,
-            points: points
-        });
-        alterEdit();
+    function editMode() {
+        setMode(!isEditing);
     }
 
-    function dontSave() {
-        alterEdit();
+    function clearAnswer() {
+        setAnswer("");
     }
 
-    function startOver() {
-        return;
+    function changeAnswer(event: React.ChangeEvent<HTMLInputElement>) {
+        setAnswer(event.target.value);
     }
 
-    function publishQuestion(question: Question): Question {
-        const newQuestion = { ...question, published: !question.published };
-        return newQuestion;
-    }
-
-    function unpublishQuestion(question: Question): Question {
-        const newQuestion = { ...question, published: question.published };
-        return newQuestion;
-    }
-    function isCorrect(question: Question, answer: string): boolean {
-        return (
-            answer.toLowerCase().trim() ===
-            question.expected.toLowerCase().trim()
-        );
-    }
-    function removeQuestion(id: string) {
-        setBodies(
-            bodies.filter((question: Question): boolean => question.id !== id)
-        );
-    }
-
-    return <div></div>;
+    return (
+        <div>
+            {isEditing ? (
+                <div>
+                    <Container>
+                        <Row>
+                            <Col>
+                                <EditMode
+                                    question={question}
+                                    deleteQuestion={deleteQuestion}
+                                    editQuestion={editQuestion}
+                                    editMode={editMode}
+                                ></EditMode>
+                            </Col>
+                        </Row>
+                        <hr />
+                    </Container>
+                </div>
+            ) : (
+                <div>
+                    <Container>
+                        <Row>
+                            <Col>
+                                <h3>{question.name}</h3>
+                                <Row>
+                                    <Col>
+                                        <span>{question.body}</span>
+                                    </Col>
+                                    <Col>
+                                        <span>
+                                            {question.points} {"Points"}
+                                        </span>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Form.Group as={Row}>
+                                        <Form.Label>Answer: </Form.Label>
+                                        <Form.Control
+                                            value={answer}
+                                            onChange={changeAnswer}
+                                        />
+                                    </Form.Group>
+                                </Row>
+                                <Row>
+                                    <Col>
+                                        {answer === question.expected ? (
+                                            <span>Lets go!</span>
+                                        ) : (
+                                            <span></span>
+                                        )}
+                                    </Col>
+                                    <Col>
+                                        <Button onClick={clearAnswer}>
+                                            Clear Answer
+                                        </Button>
+                                    </Col>
+                                </Row>
+                            </Col>
+                            <Col>
+                                <Button>Submit</Button>
+                                <br />
+                                <Button onClick={editMode}>
+                                    Edit Question
+                                </Button>
+                            </Col>
+                        </Row>
+                        <hr />
+                    </Container>
+                </div>
+            )}
+        </div>
+    );
 }
